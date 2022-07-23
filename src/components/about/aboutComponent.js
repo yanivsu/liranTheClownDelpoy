@@ -75,6 +75,7 @@ export default function About() {
         <Grid
           container
           direction="row"
+          xs={12}
           sm={12}
           justifyContent="space-between"
           alignItems="center"
@@ -102,6 +103,7 @@ export default function About() {
                     textAlign: "center",
                     color: "#001222",
                     fontWeight: "bold",
+                    marginLeft: "-3%",
                   }}
                 >
                   <Box lineHeight={2}>{enums.aboutComponentsTexts.TITLE}</Box>

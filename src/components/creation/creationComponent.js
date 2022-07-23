@@ -14,10 +14,12 @@ import * as enums from "../../helpers/enums";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
-    marginTop: theme.spacing(3),
-    transition: "transform 0.15s ease-in-out",
-    "&:hover": { transform: "scale3d(1.10, 1.10, 1)" },
+    [theme.breakpoints.up("sm")]: {
+      maxWidth: 345,
+      marginTop: theme.spacing(3),
+      transition: "transform 0.15s ease-in-out",
+      "&:hover": { transform: "scale3d(1.10, 1.10, 1)" },
+    },
   },
 
   media: {
@@ -41,6 +43,9 @@ const useStyles = makeStyles((theme) => ({
 
   card: {
     minWidth: "385px",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "15px",
+    },
   },
 }));
 
@@ -107,42 +112,44 @@ function Creation() {
           {/* <Game /> */}
           {/* </Grid> */}
         </Grid>
-        <Grid container>
+        <Grid container style={{ marginTop: "3%" }}>
           <Typography variant="h4">דפי חשיבה ופעילות</Typography>
         </Grid>
-        <Grid container md={12} justifyContent="center">
-          {enums.thinkPaperLinks.map((paintPaperLink, index) => {
-            return (
-              <Grid item className={classes.card}>
-                <Card
-                  className={classes.root}
-                  style={{ cursor: "pointer" }}
-                  key={index}
-                >
-                  <CardMedia
-                    className={classes.media}
-                    component="img"
-                    image={paintPaperLink.image}
-                    title="Paint"
-                  ></CardMedia>
-                  <CardActions disableSpacing>
-                    <Grid container justifyContent="center">
-                      <a
-                        href={paintPaperLink.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        download
-                      >
-                        <Button>
-                          <GetAppIcon />
-                        </Button>
-                      </a>
-                    </Grid>
-                  </CardActions>
-                </Card>
-              </Grid>
-            );
-          })}
+        <Grid>
+          <Grid container md={12} justifyContent="center">
+            {enums.thinkPaperLinks.map((paintPaperLink, index) => {
+              return (
+                <Grid item className={classes.card}>
+                  <Card
+                    className={classes.root}
+                    style={{ cursor: "pointer" }}
+                    key={index}
+                  >
+                    <CardMedia
+                      className={classes.media}
+                      component="img"
+                      image={paintPaperLink.image}
+                      title="Paint"
+                    ></CardMedia>
+                    <CardActions disableSpacing>
+                      <Grid container justifyContent="center">
+                        <a
+                          href={paintPaperLink.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          download
+                        >
+                          <Button>
+                            <GetAppIcon />
+                          </Button>
+                        </a>
+                      </Grid>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              );
+            })}
+          </Grid>
         </Grid>
         <Grid style={{ marginTop: "3%" }} container justifyContent="center">
           <a
